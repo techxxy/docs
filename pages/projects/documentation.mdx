@@ -1,0 +1,83 @@
+import Image from 'next/image'
+import { Callout, Steps } from 'nextra/components'
+
+# Personal Documentation Site
+
+The website, you are looking at, is built based on [NEXTRA](https://nextra.site/), which is a framework on top of Next.js. It offers Documentation and Blog theme, and this is [Documentation Theme](https://nextra.site/docs).
+
+<Callout>
+  The easyist way to install and deploy this site is pressing the Deploy button below. The template project will be forked in your GitHub repository and automatically deployed in Vercel. <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/> 
+  However, this website is installed as a new project and deployed in GitHub Pages.
+</Callout>
+
+## Start as New Project
+Follow the [instrunction](https://nextra.site/docs/docs-theme/start#start-as-new-project) in NEXTRA to install as new project.
+
+## Deploy in GitHub Pages
+
+<Steps>
+### Step 1 Set GitHub Pages Setting
+Change `Deploy from a branch` to `GitHub Actions` in Settings > Pages > Build and deployment > Source.
+
+![](/pages.png)
+ 
+### Step 2 Edit yml File
+Press `Configure` of the suggested workflow(Next.js) and replace its content with [the code of this link](https://github.com/techxxy/documentation/blob/main/.github/workflows/nextjs.yml).
+
+Line 56 was changed.
+```yml
+56	node-version: "lts/*"
+```
+
+Two parts below were removed.
+```yml
+61	with:
+62	# Automatically inject basePath in your Next.js configuration file and disable
+63	# server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
+64	#
+65	# You may remove this line if you want to manage the configuration yourself.
+66	static_site_generator: next
+```
+
+```yml
+83	- name: Static HTML export with Next.js
+84	run: ${{ steps.detect-package-manager.outputs.runner }} next export
+```
+
+### Step 3 Edit next.config.js
+
+Replace the content of next.config.js with the code below. Added or changed parts are highleighted.
+
+```js {1-3, 5-11, 16, 19-22} copy
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const nextConfig = {
+    images: {                   // using Nextra's image optimization instead of Next's,
+        unoptimized: true,      // or error will be occurd.
+      },
+    basePath: '/documentation', // Set with your repository name, or style will be broken. 
+    output: 'export',           // enabling a static export to deploy in GitHub Pages.
+  }
+
+const withNextra = require('nextra')({
+    theme: 'nextra-theme-docs',
+    themeConfig: './theme.config.jsx',
+    staticImage: true
+  })
+   
+  module.exports = {
+    ...withNextra(),
+    ...nextConfig,
+  };
+```
+
+</Steps>
+
+
+
+
+
+### How to install and deploy in GitHub Pages
+

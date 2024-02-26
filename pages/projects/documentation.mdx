@@ -3,20 +3,20 @@ import { Callout, Steps, Tabs } from 'nextra/components'
 
 # Personal Documentation Site
 
-The website, you are looking at. It is built based on [NEXTRA](https://nextra.site/), which is a framework on top of Next.js. It offers Documentation and Blog theme and this is [Documentation Theme](https://nextra.site/docs).
+The website you are currently viewing is built using [NEXTRA](https://nextra.site/), a framework built on top of Next.js. It offers both Documentation and Blog themes, and this instance employs the [Documentation Theme](https://nextra.site/docs).
 
-## Run in local Machine
+## Running Locally
 
-<Tabs items={['Using Template', 'Start as New Project']} margin-left="20">
+<Tabs items={['Using Template', 'Starting a New Project']} margin-left="20">
   <Tabs.Tab>
     <Steps>
-      ### Create Project
+      ### Creating the Project
         <Callout>
-            The easyist way to install and deploy this site is pressing the Deploy button below. The template project will be forked in your GitHub repository and automatically deployed in [Vercel](https://vercel.com/). <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/> 
+            The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/). <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/> 
         </Callout>
 
-     ### Edit .gitignore
-     Replace .gitignore with the following.
+     ### Editing .gitignore
+     Replace your current `.gitignore` with the following.
     <details>
     <summary> Click here to view the new `.gitignore` code.</summary>
     
@@ -60,15 +60,15 @@ The website, you are looking at. It is built based on [NEXTRA](https://nextra.si
         ```
     </details>
 
-     ### Install
-     The site is already run in Vercel. However, to run the site in your computer, go to the project directory in the terminal and run `npm i` to install node modules.
+     ### Installation
+    The site is already running on Vercel. However, to run the site on your computer, navigate to the project directory in the terminal and execute `npm i` to install the necessary node modules.
 
      ```bash copy
         npm i
     ```
 
-    ### Run
-    Run `npm run dev` and check the site(http://localhost:3000) is running in browser.
+    ### Running the Site
+    Execute `npm run dev` and check if the site is running in your browser at(http://localhost:3000).
 
      ```bash copy
         npm run dev
@@ -78,24 +78,24 @@ The website, you are looking at. It is built based on [NEXTRA](https://nextra.si
   </Tabs.Tab>
   <Tabs.Tab>
     <Steps>
-    ### Create Repostiory in GitHub
-    First creat a new respository with `README.md`, `LICENSE(MIT)` and `.gitignore(node)` and pull it to the computer.
-    ### Install
-      Go to the project directory in the terminal and follow the [instruction](https://nextra.site/docs/docs-theme/start#start-as-new-project) in NEXTRA to install libraries and run in local.
+    ### Create Repository in GitHub
+    First, create a new repository with README.md, LICENSE (MIT), and .gitignore (node), then pull it to your computer.
+    ### Installation
+      Navigate to the project directory in the terminal and follow the [instruction](https://nextra.site/docs/docs-theme/start#start-as-new-project) in NEXTRA to install the necessary libraries and run the project locally.
     </Steps>
   </Tabs.Tab>
 </Tabs>
 
-## Deploy in GitHub Pages
+## Deploying to GitHub Pages
 
 <Steps>
-### Set GitHub Pages Setting
-Change `Deploy from a branch` to `GitHub Actions` in Settings > Pages > Build and deployment > Source.
+### Configure GitHub Pages Settings
+Navigate to Settings > Pages > Build and Deployment > Source, and change `Deploy from a branch` to `GitHub Actions`.
 
 ![](/pages.png)
  
-### Edit yml File
-Press `Configure` and replace its content with the code below.
+### Edit YAML File
+Click on `Configure` and replace its content with the following code.
 
 <details>
   <summary>Click here to view the code</summary>
@@ -199,7 +199,7 @@ jobs:
 
 ### Edit next.config.js
 
-Replace the content of `next.config.js` with the code below. Added or changed parts are highleighted.
+Replace the content of `next.config.js` with the following code. The added or changed parts are highlighted.
 
 ```js {1-3, 5-11, 18-21} copy
 /**
@@ -207,11 +207,11 @@ Replace the content of `next.config.js` with the code below. Added or changed pa
  */
 
 const nextConfig = {
-    images: {                   // using Nextra's image optimization instead of Next's,
-        unoptimized: true,      // or error will be occurd.
+    images: {                   // Using Nextra's image optimization instead of Next's,
+        unoptimized: true,      // or an error will occur.
       },
-    basePath: '/documentation', // Set with your repository name, or style will be broken. 
-    output: 'export',           // enabling a static export to deploy in GitHub Pages.
+    basePath: '/documentation', // Set this with your repository name, or styles will break. 
+    output: 'export',           // Enabling static export to deploy on GitHub Pages.
   }
 
 const withNextra = require('nextra')({
@@ -227,17 +227,17 @@ const withNextra = require('nextra')({
 
 ### Run
 
-`basePath` is set now. So when you run `npm run dev`, the website is working under http://localhost:3000/basePath instead of http://localhost:3000.
+With basePath now set, when you execute `npm run dev`, the website will be accessible at http://localhost:3000/basePath instead of http://localhost:3000.
 
 ### Build
 
-Run `npm run build` and check that the `out` folder is created in the project directory. 
+Execute `npm run build` and verify that the `out` folder is generated in the project directory.
 
 ### Start
 
-Run `npx serve@latest out` and check the site is working in http://localhost:3000/basePath.
+Launch the site by running `npx serve@latest out` and ensure it's accessible at  http://localhost:3000/basePath.
 
-### Push to repository
+### Push to Repository
 
 ``` bash
 git add .
@@ -245,8 +245,10 @@ git commit -m "apply static export out"
 git push origin main
 ```
 
-### Check GitHub Pages
+### Verify GitHub Pages
 
+Navigate to `Actions` to review the deployment status. Click on the gear icon within the GitHub repository and choose `Use your GitHub Pages website` to update the link under About.
 
+![](/pagesurl.png)
 
 </Steps>

@@ -1,3 +1,254 @@
-# Welcome to Nextra
+import Image from 'next/image'
+import { Callout, Steps, Tabs } from 'nextra/components'
+
+# Personal Documentation Site
+
+The website you are currently viewing is built using [NEXTRA](https://nextra.site/), a framework built on top of Next.js. It offers both Documentation and Blog themes, and this instance employs the [Documentation Theme](https://nextra.site/docs).
+
+## Running Locally
+
+<Tabs items={['Using Template', 'Starting a New Project']} margin-left="20">
+  <Tabs.Tab>
+    <Steps>
+      ### Creating the Project
+        <Callout>
+            The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/). <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/> 
+        </Callout>
+
+     ### Editing .gitignore
+     Replace your current `.gitignore` with the following.
+    <details>
+    <summary> Click here to view the new `.gitignore` code.</summary>
+    
+        ``` ansi filename=".gitignore" copy
+        # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+        # dependencies
+        /node_modules
+        /.pnp
+        .pnp.js
+        .yarn/install-state.gz
+
+        # testing
+        /coverage
+
+        # next.js
+        /.next/
+        /out/
+
+        # production
+        /build
+
+        # misc
+        .DS_Store
+        *.pem
+
+        # debug
+        npm-debug.log*
+        yarn-debug.log*
+        yarn-error.log*
+
+        # local env files
+        .env*.local
+
+        # vercel
+        .vercel
+
+        # typescript
+        *.tsbuildinfo
+        next-env.d.ts
+        ```
+    </details>
+
+     ### Installation
+    The site is already running on Vercel. However, to run the site on your computer, navigate to the project directory in the terminal and execute `npm i` to install the necessary node modules.
+
+     ```bash copy
+        npm i
+    ```
+
+    ### Running the Site
+    Execute `npm run dev` and check if the site is running in your browser at(http://localhost:3000).
+
+     ```bash copy
+        npm run dev
+    ```
+
+    </Steps>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Steps>
+    ### Create Repository in GitHub
+    First, create a new repository with README.md, LICENSE (MIT), and .gitignore (node), then pull it to your computer.
+    ### Installation
+      Navigate to the project directory in the terminal and follow the [instruction](https://nextra.site/docs/docs-theme/start#start-as-new-project) in NEXTRA to install the necessary libraries and run the project locally.
+    </Steps>
+  </Tabs.Tab>
+</Tabs>
+
+## Deploying to GitHub Pages
+
+<Steps>
+### Configure GitHub Pages Settings
+Navigate to Settings > Pages > Build and Deployment > Source, and change `Deploy from a branch` to `GitHub Actions`.
+
+![](/pages.png)
  
-Hello, world!
+### Edit YAML File
+Click on `Configure` and replace its content with the following code.
+
+<details>
+  <summary>Click here to view the code</summary>
+```yml filename=".github/workflows/nextjs.yml" copy
+# Sample workflow for building and deploying a Next.js site to GitHub Pages
+#
+# To get started with Next.js see: https://nextjs.org/docs/getting-started
+#
+name: Deploy Next.js site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          # Generate a new cache whenever packages or source files change.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # If source files changed but packages didn't, rebuild from a prior cache.
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+
+      - name: Install dependencies
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Build with Next.js
+        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+</details>
+
+### Edit next.config.js
+
+Replace the content of `next.config.js` with the following code. The added or changed parts are highlighted.
+
+```js {1-3, 5-11, 18-21} copy
+/**
+ * @type {import('next').NextConfig}
+ */
+
+const nextConfig = {
+    images: {                   // Using Nextra's image optimization instead of Next's,
+        unoptimized: true,      // or an error will occur.
+      },
+    basePath: '/documentation', // Set this with your repository name, or styles will break. 
+    output: 'export',           // Enabling static export to deploy on GitHub Pages.
+  }
+
+const withNextra = require('nextra')({
+    theme: 'nextra-theme-docs',
+    themeConfig: './theme.config.jsx'
+  })
+   
+  module.exports = {
+    ...withNextra(),
+    ...nextConfig,
+  };
+```
+
+### Run
+
+With basePath now set, when you execute `npm run dev`, the website will be accessible at http://localhost:3000/basePath instead of http://localhost:3000.
+
+### Build
+
+Execute `npm run build` and verify that the `out` folder is generated in the project directory.
+
+### Start
+
+Launch the site by running `npx serve@latest out` and ensure it's accessible at  http://localhost:3000/basePath.
+
+### Push to Repository
+
+``` bash
+git add .
+git commit -m "apply static export out"
+git push origin main
+```
+
+### Verify GitHub Pages
+
+Navigate to `Actions` to review the deployment status. Click on the gear icon within the GitHub repository and choose `Use your GitHub Pages website` to update the link under About.
+
+![](/pagesurl.png)
+
+</Steps>

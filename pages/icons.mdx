@@ -1,35 +1,51 @@
 import {Steps, Cards, Card} from 'nextra/components'
 import { IoWarningOutline } from "react-icons/io5";
 
-# Using Icons in React Projects
+# Using Icons
 
-To use icons in this document as following examples or in other React projects, React-Icon package which includds multiple icon packs is installed. 
+Here are two key things to remember when integrating icons into various types of projects:
 
-#### Icon Examples used in Cards
-<Cards>
-  <Card icon={<IoWarningOutline size="26"/>} title="Callout" href="" />
-</Cards>
+1. **[SF Symbols](https://developer.apple.com/sf-symbols)** for Mac & iOS Projects
+2. **[React-icons](https://react-icons.github.io/react-icons)** for All Projects
 
-#### Icon Examples used in plain text
-<IoWarningOutline size="26" />
+## iOS/Mac Projects
 
-## Icon Examples used in Cards
+Utilize the Mac application [SF Symbols](https://developer.apple.com/sf-symbols) for seamless integration of icons into your iOS projects. Simply install SF Symbols on your Mac, search for the desired icon, and copy it into Xcode for immediate use.
+
+![](/sfsymbols.png)
+
+## React/Next.js Projects
+For React (Next.js) projects, consider leveraging libraries such as [React-icons](https://react-icons.github.io/react-icons). This comprehensive library includes various open-source icon sets like [Lucide](https://lucide.dev/icons/), [Bootstrap](https://icons.getbootstrap.com/) and [Google Material UI](https://mui.com/material-ui/material-icons/). Installation instructions are provided at the bottom of the React-icons page and are straightforward to follow. Keep in mind that multiple import statements may be necessary as icons from different packages might be sourced like the following.
+
+``` ts
+import { IoWarningOutline } from "react-icons/io5";
+import { PiNumberCircleOneFill } from "react-icons/pi";
+import { HiOutlineRectangleStack } from "react-icons/hi2";
+<PiNumberCircleOneFill />
+<HiOutlineRectangleStack />
+<IoWarningOutline size="24" />
+```
+
+## Other Types of Projects
+
+Explore individual icon downloads available on websites listed within [React-icons](https://react-icons.github.io/react-icons). Websites such as [Bootstrap](https://icons.getbootstrap.com/) offer SVG downloads for individual icons, while [Lucide](https://lucide.dev/icons/) provides various formats including SVG. These icons can then be directly included in projects, such as a simple HTML site, and even in Mac projects as image assets.
+
+![](/lucide.png)
+
+## For This Site
 <Steps>
-    ### Select an icon package
-    Here we select [React-Icons](https://www.npmjs.com/package/react-icons).
+    ### Install
 
-    ### Installation
-
-    Execute the following command in Terminal:
+    Install [React-Icons](https://react-icons.github.io/react-icons/) by execution the following command in Terminal:
 
     ```bash
     npm install react-icons --save
     ```
 
-    ### Select an icon to use
-    Select an icon to use in the [searchbox](https://react-icons.github.io/react-icons/) and click the icon to view codes.
+    ### Select an icon
+    Select an icon to use in the [searchbox](https://react-icons.github.io/react-icons/) and click the icon to view the import statement and icon name tag.
 
-    ### Import the icon in the .mdx file
+    ### Import in .mdx
     Import an icon pack as stated in the code of the selected icon.
 
     ```mdx
@@ -38,7 +54,7 @@ To use icons in this document as following examples or in other React projects, 
     import { HiOutlineRectangleStack } from "react-icons/hi2";
     ```
 
-    If you want to adjust the size of the icons, add the `size` property.
+    If you want to adjust the size of the icons, add the `size` property in icon tags.
 
     ```mdx
     <PiNumberCircleOneFill />
@@ -46,5 +62,3 @@ To use icons in this document as following examples or in other React projects, 
     <IoWarningOutline size="24" />
     ```
 </Steps>
-
-

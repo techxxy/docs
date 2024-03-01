@@ -1,9 +1,17 @@
 import Image from 'next/image'
-import { Callout, Steps, Tabs } from 'nextra/components'
+import { Callout, Steps, Tabs, Cards, Card } from 'nextra/components'
+import { FaIcons } from "react-icons/fa6";
+import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
 # Personal Documentation Site
 
 The website you are currently viewing is built using [NEXTRA](https://nextra.site/), a framework built on top of Next.js. It offers both Documentation and Blog themes, and this instance employs the [Documentation Theme](https://nextra.site/docs).
+
+<Cards>
+  <Card icon={<HiOutlineRocketLaunch size="22"/>} title="Instsallation" href="#running-locally" />
+  <Card icon={<FaIcons size="20"/>} title="Icons" href="../icons" />
+</Cards>
+
 
 ## Running Locally
 
@@ -12,7 +20,10 @@ The website you are currently viewing is built using [NEXTRA](https://nextra.sit
     <Steps>
       ### Creating the Project
         <Callout>
-            The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/). <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/> 
+            The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/).
+            <a href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false">
+            <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/>
+            </a>
         </Callout>
 
      ### Editing .gitignore

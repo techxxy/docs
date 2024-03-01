@@ -1,0 +1,50 @@
+import {Steps, Cards, Card} from 'nextra/components'
+import { IoWarningOutline } from "react-icons/io5";
+
+# Using Icons in React Projects
+
+To use icons in this document as following examples or in other React projects, React-Icon package which includds multiple icon packs is installed. 
+
+#### Icon Examples used in Cards
+<Cards>
+  <Card icon={<IoWarningOutline size="26"/>} title="Callout" href="" />
+</Cards>
+
+#### Icon Examples used in plain text
+<IoWarningOutline size="26" />
+
+## Icon Examples used in Cards
+<Steps>
+    ### Select an icon package
+    Here we select [React-Icons](https://www.npmjs.com/package/react-icons).
+
+    ### Installation
+
+    Execute the following command in Terminal:
+
+    ```bash
+    npm install react-icons --save
+    ```
+
+    ### Select an icon to use
+    Select an icon to use in the [searchbox](https://react-icons.github.io/react-icons/) and click the icon to view codes.
+
+    ### Import the icon in the .mdx file
+    Import an icon pack as stated in the code of the selected icon.
+
+    ```mdx
+    import { IoWarningOutline } from "react-icons/io5";
+    import { PiNumberCircleOneFill } from "react-icons/pi";
+    import { HiOutlineRectangleStack } from "react-icons/hi2";
+    ```
+
+    If you want to adjust the size of the icons, add the `size` property.
+
+    ```mdx
+    <PiNumberCircleOneFill />
+    <HiOutlineRectangleStack />
+    <IoWarningOutline size="24" />
+    ```
+</Steps>
+
+

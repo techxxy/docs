@@ -1,5 +1,7 @@
 import {Steps, Cards, Card} from 'nextra/components'
 import { IoWarningOutline } from "react-icons/io5";
+import { PiNumberCircleOneFill } from "react-icons/pi";
+import { HiOutlineRectangleStack } from "react-icons/hi2";
 
 # Using Icons
 
@@ -33,20 +35,27 @@ Explore individual icon downloads available on websites listed within [React-ico
 ![](/lucide.png)
 
 ## For This Site
-<Steps>
-    ### Install
+This site features a section called Cards, displayed below, and each card contains an icon. To incorporate icons, they must be installed as libraries or added as images. For this site, [React-Icons](https://react-icons.github.io/react-icons/) has been installed additionally. Consequently, adding a new icon simply requires selecting it from [React-Icons](https://react-icons.github.io/react-icons/), adding an import statement in the .mdx file, and inserting the icon tag.
 
-    Install [React-Icons](https://react-icons.github.io/react-icons/) by execution the following command in Terminal:
+<Cards>
+  <Card icon={<IoWarningOutline size="26"/>} title="Scroll to Top" href="" />
+  <Card icon={<HiOutlineRectangleStack size="26"/>} title="Stay here" href="#for-this-site" />
+</Cards>
+
+<Steps>
+    ### Installation
+
+    Execute the following command in Terminal:
 
     ```bash
     npm install react-icons --save
     ```
 
-    ### Select an icon
-    Select an icon to use in the [searchbox](https://react-icons.github.io/react-icons/) and click the icon to view the import statement and icon name tag.
+    ### Selecting an icon
+    You can search for an icon in the [search box](https://react-icons.github.io/react-icons/) and click on it to view the import statement and the icon name tag.
 
     ### Import in .mdx
-    Import an icon pack as stated in the code of the selected icon.
+    Import the icon as specified in the code of the selected icon.
 
     ```mdx
     import { IoWarningOutline } from "react-icons/io5";
@@ -54,7 +63,7 @@ Explore individual icon downloads available on websites listed within [React-ico
     import { HiOutlineRectangleStack } from "react-icons/hi2";
     ```
 
-    If you want to adjust the size of the icons, add the `size` property in icon tags.
+    If you want to adjust the size of the icons, add the size property in the icon tags.
 
     ```mdx
     <PiNumberCircleOneFill />

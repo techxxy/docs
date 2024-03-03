@@ -1,0 +1,56 @@
+# Node.js Environment
+
+[Next.js Dashboard App](https://nextjs.org/learn/dashboard-app) is an official learning example provided by Next.js. Once you follow the example, the development and deployment environment appear as shown in the following diagram.
+
+The dashboard app includes login/logout functionality and features for creating, editing, and deleting invoices. However, there is no signup function available. Login information to access the website is provided at the bottom of [the page of this link](https://nextjs.org/learn/dashboard-app/adding-authentication). The Dashboard App running can be visited by clicking on the link in the diagram.
+
+## Background
+The reason I created this diagram primarily pertains to databases. In most traditional development environments, particularly for exemplary projects, a database typically runs locally inside a server. When I received a question about database connections from an experienced software engineer, I decided to draw this diagram. For this project, I do not have a locally running database. Only Vercel Postgres is used for development, as well as for production.
+
+Github is one of the remote git repository services. Once Github and Vercel are connected, a Next.js project can be deployed on Vercel with minimal configuration. If I push the code to Github, it will be automatically built and deployed on the Vercel server. Therefore, the site is already running in a production environment, accessible to anyone.
+
+For instructions on how to set up Github, Vercel, and Vercel Postgres, please refer to the [link](https://nextjs.org/learn/dashboard-app/setting-up-your-database) provided.
+
+## Environment Setup
+```mermaid
+flowchart TB;
+classDef start stroke:#DE6C78
+classDef link color:#2F7EDE
+
+subgraph A["My Computer (Developement)"]
+subgraph AA[Project]
+A1(Source Code):::start;
+A5(.next);
+AAA(Local Web Server);
+end
+A3(Browser);
+end
+
+subgraph B["GitHub"]
+B1(<u>Source Code Repository</u>):::link;
+click B1 "https://github.com/techxxy/nextjs-dashboard" _blank
+end
+
+subgraph C["Vercel (Production)"]
+subgraph C5["Vercel Runtime (Node.js)"]
+C1(<u>Web Server</u>):::link;
+click C1 "https://nextjs-dashboard-brown-zeta-34.vercel.app" _blank
+end
+subgraph CC[Vercel Storage]
+C2[(PostgresSQL)];
+end
+end
+
+D1(Browser);
+
+A1 -- git push origin main --> B1;
+A1 -- npm run dev --> AAA;
+A1 -- npm run build --> A5;
+A5 -- npm run star --> AAA;
+B1 -- Automatic build & start --> C1;
+A3 -- http://localhost:3000 --> AAA ;
+C1 --- C2;
+C2 --- AAA;
+A3 --> C1;
+D1 --> C1;
+```

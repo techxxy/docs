@@ -1,3 +1,9 @@
+// https://nextra.site/docs/docs-theme/theme-configuration
+
+import React from 'react'
+import { useRouter } from 'next/router'
+import { useConfig} from 'nextra-theme-docs'
+
 export default {
   logo: (
     <>
@@ -12,10 +18,30 @@ export default {
       </span>
     </>
   ),
-    project: {
-      link: 'https://github.com/techxxy'
+  docsRepositoryBase: 'https://github.com/techxxy/documentation/tree/main',
+  project: {
+    link: 'https://github.com/techxxy'
+  },
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Techxxy'
     }
-    // ... other theme options
+  },
+  head: () => {
+    const { asPath, defaultLocale, locale } = useRouter()
+    const { frontMatter } = useConfig()
+    const url =
+      'https://my-app.com' +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+     return (
+      <>
+        <meta property="og:url" content={"https://techxxy.github.io/documentation"} />
+        <meta property="og:title" content={frontMatter.title || 'Techxxy\'s Wiki Site'} />
+        <meta
+          property="og:description"
+          content={frontMatter.description || 'Techxxy\'s personal documentation site, focusing mainly on software projects.'}
+        />
+      </>
+    )
   }
-  
-  
+}

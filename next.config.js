@@ -5,19 +5,19 @@ const nextConfig = {
   images: {
       unoptimized: true,
     },
-  basePath: '/documentation', 
-  async redirects() {
+  basePath: '/docs', 
+/*   async redirects() {
     return [
         {
             source: '/',
-            destination: '/documentation',
+            destination: '/docs',
             basePath: false,
             permanent: false
         }
     ]
-  },
+  }, */
     output: 'export'
-  }
+}
 
 const withNextra = require('nextra')({
     theme: 'nextra-theme-docs',

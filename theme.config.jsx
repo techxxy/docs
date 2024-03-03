@@ -14,11 +14,11 @@ export default {
         />
       </svg>
       <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
-        Techxxy's Documentation
+        Techxxy's Docs
       </span>
     </>
   ),
-  docsRepositoryBase: 'https://github.com/techxxy/documentation/tree/main',
+  docsRepositoryBase: 'https://github.com/techxxy/docs/tree/main',
   project: {
     link: 'https://github.com/techxxy'
   },
@@ -35,7 +35,7 @@ export default {
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
      return (
       <>
-        <meta property="og:url" content={"https://techxxy.github.io/documentation"} />
+        <meta property="og:url" content={"https://techxxy.github.io/docs"} />
         <meta property="og:title" content={frontMatter.title || 'Techxxy\'s Wiki Site'} />
         <meta
           property="og:description"

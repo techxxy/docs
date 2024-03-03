@@ -8,7 +8,8 @@
     "react-icons": "^5.0.1"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "npm run open-browser && next",
+    "open-browser": "open http://localhost:3000/docs",
     "build": "next build",
     "start": "next start"
   }

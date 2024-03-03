@@ -6,17 +6,7 @@ const nextConfig = {
       unoptimized: true,
     },
   basePath: '/docs', 
-/*   async redirects() {
-    return [
-        {
-            source: '/',
-            destination: '/docs',
-            basePath: false,
-            permanent: false
-        }
-    ]
-  }, */
-    output: 'export'
+  output: 'export'
 }
 
 const withNextra = require('nextra')({

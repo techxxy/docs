@@ -3,106 +3,11 @@ import { Callout, Steps, Tabs, Cards, Card } from 'nextra/components'
 import { FaIcons } from "react-icons/fa6";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
-# Documentation Site
 
-The website you are currently viewing is built using [NEXTRA](https://nextra.site/), a framework built on top of Next.js. It offers both Documentation and Blog themes, and this instance employs the [Documentation Theme](https://nextra.site/docs).
+# Next.js to GitHub Pages
+[<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="nx-inline nx-h-5 nx-shrink-0 ltr:nx-rotate-180"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>What is GitHub Pages?](/github-pages)
 
-<Callout>
-  The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/).
-  <a href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false">
-  <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/>
-  </a> 
-  However, please note that this site has been installed as a new project and deployed on GitHub Pages.
-</Callout>
-
-Later, to utilize icons on this site, React-icons has been installed. Please click on the following Icons card for more information.
-
-<Cards>
-  <Card icon={<FaIcons size="20"/>} title="Icons" href="../icons#for-this-site" />
-</Cards>
-
-
-## Running Locally
-
-<Tabs items={['Using Template', 'Starting a New Project']} margin-left="20">
-  <Tabs.Tab>
-    <Steps>
-      ### Creating the Project
-      Click on the following deploy button to create a project from a template and deploy it on Versel. 
-      <a href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false">
-        <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/>
-      </a>
-
-    ### Editing .gitignore
-    Replace your current `.gitignore` with the following.
-    <details>
-    <summary> Click here to view the new `.gitignore` code.</summary>
-    
-        ``` ansi filename=".gitignore" copy
-        # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-        # dependencies
-        /node_modules
-        /.pnp
-        .pnp.js
-        .yarn/install-state.gz
-
-        # testing
-        /coverage
-
-        # next.js
-        /.next/
-        /out/
-
-        # production
-        /build
-
-        # misc
-        .DS_Store
-        *.pem
-
-        # debug
-        npm-debug.log*
-        yarn-debug.log*
-        yarn-error.log*
-
-        # local env files
-        .env*.local
-
-        # vercel
-        .vercel
-
-        # typescript
-        *.tsbuildinfo
-        next-env.d.ts
-        ```
-    </details>
-
-     ### Installation
-    The site is already running on Vercel. However, to run the site on your computer, navigate to the project directory in the terminal and execute `npm i` to install the necessary node modules.
-
-     ```bash copy
-        npm i
-    ```
-
-    ### Running the Site
-    Execute `npm run dev` and check if the site is running in your browser at(http://localhost:3000).
-
-     ```bash copy
-        npm run dev
-    ```
-
-    </Steps>
-  </Tabs.Tab>
-  <Tabs.Tab>
-    <Steps>
-    ### Create Repository in GitHub
-    First, create a new repository with README.md, LICENSE (MIT), and .gitignore (node), then pull it to your computer.
-    ### Installation
-      Navigate to the project directory in the terminal and follow the [instruction](https://nextra.site/docs/docs-theme/start#start-as-new-project) in NEXTRA to install the necessary libraries and run the project locally.
-    </Steps>
-  </Tabs.Tab>
-</Tabs>
+This page explains how to deploy the site you are currently viewing, which is a static Next.js App, to GitHub Pages. 
 
 ## Deploying to GitHub Pages
 
@@ -247,9 +152,10 @@ const withNextra = require('nextra')({
 
 With basePath now set, when you execute `npm run dev`, the website will be accessible at http://localhost:3000/basePath instead of http://localhost:3000.
 
+
 ### Build
 
-Execute `npm run build` and verify that the `out` folder is generated in the project directory.
+Execute `npm run build` and verify that the `out` folder is generated in the project directory. 
 
 ### Start
 

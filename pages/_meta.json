@@ -1,6 +1,12 @@
 {
     "index": "Introduction",
-    "projects": "Projects",
-    "examples": "Mardown Examples",
-    "icons": "Icons"
+    "nextjs": "Next.js Environment",
+    "github-pages": "GitHub Pages",
+    "docs": "Nextra Docs - This site",    
+    "nextjs-to-github-pages": "Next.js to GitHub Pages",
+    "icons": "Icons",
+    "postgresql": {"title": "PostgreSQL", "display": "hidden"},
+    "examples": {"title": "Mardown Examples", "display": "hidden"},
+    "git": {"title": "Git", "display": "hidden"}
   }
+

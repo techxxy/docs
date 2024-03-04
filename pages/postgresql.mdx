@@ -1,0 +1,57 @@
+# PostgresSQL
+
+## Installation using Homebrew
+This section explains how to install PostgresSQL16 on Mac using Homebrew. Check the recent stable version [here](https://www.postgresql.org/download/macosx/). For detailed explanation, please refer to [this artical](https://medium.com/@abhinavsinha_/download-and-configure-postgresql16-on-macos-d41dc49217b6). Explanation of this artile is great.
+
+My process is slighlty different to find the right path.
+
+```zsh
+brew install postgresql@16
+brew services start postgresql@16
+sudo find / -name pg_config
+```
+``control + C`` to stop displaying more results
+
+Copy the part of the first result. My first result:
+``/usr/local/Cellar/postgresql@16/16.2_1/bin``/pg_config
+
+and paste it at the end of the follwoing 
+``export PATH=$PATH:``
+
+so make it, as ``export PATH=$PATH:/usr/local/Cellar/postgresql@16/16.2_1/bin``
+
+open .zschrc file
+```zsh copy
+open ~/.zshrc
+```
+Past it at the end of the file. 
+Save and close it. 
+``` zsh filename=".zshrc"
+# postgres
+export PATH=$PATH:/usr/local/Cellar/postgresql@16/16.2_1/bin
+````
+
+
+``` zsh
+source ~/.zshrc
+psql --version
+```
+
+## Configuring PostgreSQL
+
+``` zsh
+psql -U techxxy postgres
+ALTER USER techxxy PASSWORD '<PASSWORD>';
+\q
+sudo -u techxxy psql postgres -c "SHOW hba_file;"
+```
+
+
+
+## Changing Vercel psql to locally installed PostgreSQL
+
+Install [node-postgres](https://node-postgres.com), a collection of node.js modules for interfacing with your PostgreSQL database.
+
+``` zsh
+npm install pg
+```

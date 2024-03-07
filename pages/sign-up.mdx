@@ -1,0 +1,73 @@
+``` zsh 
+# How to create a next.js app directly in the current folder
+npx create-next-app@latest ./  --ts --use-npm
+
+Would you like to use TypeScript?  Yes
+Would you like to use ESLint?  Yes
+Would you like to use Tailwind CSS?  Yes
+Would you like to use `src/` directory? Yes
+Would you like to use App Router? (recommended)  Yes
+Would you like to customize the default import alias (@/*)?  No
+# Prisma
+npm install prisma --save-dev
+# @next-auth/prisma-adapter
+npm install @next-auth/prisma-adapter
+# initialize Prisma
+npx prisma init
+```
+
+append the following code to ``schema.prisma``
+
+```prisma
+// This block of code defines a User model
+model User {
+  id              String    @id @default(cuid()) // primary key with CUID
+  name            String    @db.VarChar(255) // varchar
+  email           String    @unique @db.VarChar(255) // email must be unique
+  emailVerifiedAt DateTime? // optional DateTime
+  emailVerifToken String?   @db.VarChar(255)
+  password        String    @db.VarChar(255)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+```
+
+```zsh filename=""
+# login to postgres server
+psql -U <CURRENTLY_LOGGED_IN_MAC_USERNAME> postgres
+# create Database
+CREATE DATABASE sign_up;
+```
+
+```evn filename=""
+// update .evn
+DATABASE_URL="postgresql://<username>:<password>@localhost:5432/ blog_nextjs_auth?schema=public"
+#
+npx prisma db push
+```
+
+```zsh filename=""
+npm install zod
+npm install bcryptjs @types/bcryptjs
+npm install nodemailer @types/nodemailer
+npm install next-auth@beta
+openssl rand -base64 32
+```
+append AUTH_SECRET in .env
+
+```evn
+# Defining the secret key used for authentication
+AUTH_SECRET=TGF................aqajFovE=
+```
+
+https://fajarwz.com/blog/email-authentication-and-verification-in-nextjs-14-with-next-auth-and-prisma/
+
+10
+11
+15
+17
+19
+23
+
+https://mailtrap.io/

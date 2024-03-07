@@ -1,53 +1,62 @@
-import {Callout, Tabs} from 'nextra/components'
+import { Callout, Tabs } from "nextra/components";
 
 # What is Github Pages?
 
 Each GitHub repository can have its own GitHub Pages, which is a static site hosting service provided by GitHub. In the repository, we can find source code, while on the GitHub Pages, we can see the actual running website. After you create a repository, you can create its GitHub Pages. Therefore, the repository comes first, and GitHub Pages follow suit.
 
 <Callout type="info">
-    It's worth noting that GitHub Pages is a free service when the repository is public.
+  It's worth noting that GitHub Pages is a free service when the repository is
+  public.
 </Callout>
 
 ## URL
+
 GitHub Pages hosts a website, so its URL is relevant and follows the repository name and user name.
 
-* The GitHub repository URL is `https://github.com/user-name/` `repository-name`
-* The GitHub Pages URL is `https://user-name.github.io/` `repository-name`
+- The GitHub repository URL is `https://github.com/user-name/` `repository-name`
+- The GitHub Pages URL is `https://user-name.github.io/` `repository-name`
 
 For instance, I, `techxxy` have a repository called `docs`, so the URLs of the repository and GitHub Pages become respetively:
-* Repository: https://github.com/techxxy/docs
-* GitHub Pages: https://techxxy.github.io/docs
+
+- Repository: https://github.com/techxxy/docs
+- GitHub Pages: https://techxxy.github.io/docs
 
 ## Special Repository
+
 <Callout>
-    There is a special repository with a unique feature: its name is `user-name.github.io`. In my case, the repository name is `techxxy.github.io`
+  There is a special repository with a unique feature: its name is
+  `user-name.github.io`. In my case, the repository name is `techxxy.github.io`
 </Callout>
 
 In normal cases, its GitHub Pages URL should be https://techxxy.github.io/techxxy.github.io. However, it is simply https://techxxy.github.io. Both URLs are functional, with the longer one being redirected to the shorter URL. This Redirection is the only difference: otherwise, everything else is exactly the same as other respositories' GitHub Pages.
 
 ## Static Site
+
 GitHub Pages is a static site hosting service, meaning only static websites function properly. Alternatively, the README.md file will be displayed.
 
 ## New Repository
+
 Please check the image below to see how to create a repository with README.md, especially how to set the name of the special repository.
 
 <details>
-<summary> Click to open image </summary>
-![image shows how to set a repository name](/new-repository.png)
+  <summary> Click to open image </summary>
+  ![image shows how to set a repository name](/new-repository.png)
 </details>
 
 ## Activate GitHub Pages
+
 Once you create a repository, you can activate its GitHub Pages in the repository URL and display the GitHub Pages link in the about section.
 
-<Tabs items={['Activate GitHub Pages', 'Display Link']}>
+<Tabs items={["Activate GitHub Pages", "Display Link"]}>
   <Tabs.Tab>
-    The image below illustrates how to set up GitHub Pages in the simplest case, particularly when it involves a basic website.
+    The image below illustrates how to set up GitHub Pages in the simplest case,
+    particularly when it involves a basic website.
     ![](/github-pages-setting.png)
   </Tabs.Tab>
   <Tabs.Tab>
-    The image below illustrates how to display the GitHub Pages link in the about section of a repository page.
-    ![](/show-pages-url.png)
+    The image below illustrates how to display the GitHub Pages link in the
+    about section of a repository page. ![](/show-pages-url.png)
   </Tabs.Tab>
 </Tabs>
 
-For Deploying Static Next.js App to GitHub Pages, please refer to the next page 
+For Deploying Static Next.js App to GitHub Pages, please refer to the next page

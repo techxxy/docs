@@ -1,4 +1,4 @@
-import {Steps, Cards, Card} from 'nextra/components'
+import { Steps, Cards, Card } from "nextra/components";
 import { IoWarningOutline } from "react-icons/io5";
 import { GrLinkTop } from "react-icons/gr";
 import { BiSolidBeenHere } from "react-icons/bi";
@@ -17,9 +17,10 @@ Utilize the Mac application [SF Symbols](https://developer.apple.com/sf-symbols)
 ![](/sfsymbols.png)
 
 ## React/Next.js Projects
+
 For React (Next.js) projects, consider leveraging libraries such as [React-icons](https://react-icons.github.io/react-icons). This comprehensive library includes various open-source icon sets like [Lucide](https://lucide.dev/icons/), [Bootstrap](https://icons.getbootstrap.com/) and [Google Material UI](https://mui.com/material-ui/material-icons/). Installation instructions are provided at the bottom of the React-icons page and are straightforward to follow. Keep in mind that multiple import statements may be necessary as icons from different packages might be sourced like the following.
 
-``` ts
+```ts
 import { IoWarningOutline } from "react-icons/io5";
 import { PiNumberCircleOneFill } from "react-icons/pi";
 import { HiOutlineRectangleStack } from "react-icons/hi2";
@@ -35,13 +36,18 @@ Explore individual icon downloads available on websites listed within [React-ico
 ![](/lucide.png)
 
 ## Icons for This Site
+
 This section explains which icon packs are installed for this site. They were installed additionally after the initial installation of this site. If you don't need to use icons, you can skip this part.
 
 The Cards, displayed below, contain an icon. To incorporate icons, they must be installed as libraries or added as images. For this site, [React-Icons](https://react-icons.github.io/react-icons/), mentioned above, has been installed. Consequently, adding a new icon simply requires searching and selecting it from [React-Icons](https://react-icons.github.io/react-icons/), adding an import statement in the .mdx file, and inserting the icon tag.
 
 <Cards>
-  <Card icon={<GrLinkTop size="20"/>} title="Scroll to Top" href="" />
-  <Card icon={<BiSolidBeenHere size="26"/>} title="Stay here" href="#for-this-site" />
+  <Card icon={<GrLinkTop size="20" />} title="Scroll to Top" href="" />
+  <Card
+    icon={<BiSolidBeenHere size="26" />}
+    title="Stay here"
+    href="#for-this-site"
+  />
 </Cards>
 
 <Steps>
@@ -72,4 +78,5 @@ The Cards, displayed below, contain an icon. To incorporate icons, they must be 
     <HiOutlineRectangleStack />
     <IoWarningOutline size="24" />
     ```
+
 </Steps>

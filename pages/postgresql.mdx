@@ -1,7 +1,84 @@
+import { Callout, Steps, Tabs, Cards, Card } from "nextra/components";
+
 # PostgresSQL
 
-## Installation using Homebrew
-This section explains how to install PostgresSQL16 on Mac using Homebrew. Check the recent stable version [here](https://www.postgresql.org/download/macosx/). For detailed explanation, please refer to [this artical](https://medium.com/@abhinavsinha_/download-and-configure-postgresql16-on-macos-d41dc49217b6). Explanation of this artile is great.
+<table>
+  <tbody>
+    <tr>
+      <td>
+      ```mermaid
+      stateDiagram-v2
+
+          state Computer {
+            direction TB
+            Install --> Postgres
+              Postgres: PostgreSQL Server
+              state Postgres {
+                direction LR
+                  state database_1 {
+                      [*] --> third
+                      third --> [*]
+                  }
+
+                  state database_2 {
+                      [*] --> d
+                      d --> [*]
+                  }
+              }
+          }
+
+      ```
+      </td>
+      
+      <td>
+``` zsh
+brew install postgresql@16
+brew services start postgresql@16
+```
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+[Next.js Dashboard App Example](https://nextjs.org/learn/dashboard-app) uses Vercel's Postgres as described in [Next.js Environment](nextjs) page. I changed it to use a local Postgres.
+
+To do this,
+
+1. PostgreSQL should be installed in Local and database and user should be created.
+2. Environmental Valiable should be changed.
+3. nodemodules for database interaction should be replaced from [@vercel/postgres](https://vercel.com/docs/storage/vercel-postgres/sdk) to [node-postgres](https://node-postgres.com/features/connecting).
+
+The most of the information in Internet was fragmented and not organized. So it was a little tough to finish. So here I stated useful links to follow.
+
+## 1. Configuration
+
+<Steps>
+  ### Installation 
+  [Abhinav Sinha's post](https://medium.com/@abhinavsinha_/download-and-configure-postgresql16-on-macos-d41dc49217b6) explains really good how to install PostgreSQL v16 on Mac using Homebrew. Please followed the instruction. 
+  
+  The post ends after  a least previeleged user with password creation. So we will give permission to the user to create Database and create tables.
+
+  ### Database Creation
+  In the PostgreSQL database name, ``-`` should not included. lower case or ``_`` are used. My database name is ``nextjs_dashboard``. For naming convetion, check [here](https://stackoverflow.com/a/2878408).
+
+  ```zsh 
+    CREATE DATABASE nextjs_dashboard; 
+  ``` 
+
+
+  ### permission
+
+</Steps>
+
+
+```zsh CREATE DATABASE database_name;
+  CREATE DATABASE nextjs_dashboard; 
+``` 
+
+
 
 My process is slighlty different to find the right path.
 
@@ -10,48 +87,122 @@ brew install postgresql@16
 brew services start postgresql@16
 sudo find / -name pg_config
 ```
-``control + C`` to stop displaying more results
+
+`control + C` to stop displaying more results
 
 Copy the part of the first result. My first result:
-``/usr/local/Cellar/postgresql@16/16.2_1/bin``/pg_config
+`/usr/local/Cellar/postgresql@16/16.2_1/bin`/pg_config
 
-and paste it at the end of the follwoing 
-``export PATH=$PATH:``
+and paste it at the end of the follwoing
+`export PATH=$PATH:`
 
-so make it, as ``export PATH=$PATH:/usr/local/Cellar/postgresql@16/16.2_1/bin``
+so make it, as `export PATH=$PATH:/usr/local/Cellar/postgresql@16/16.2_1/bin`
 
 open .zschrc file
+
 ```zsh copy
 open ~/.zshrc
 ```
-Past it at the end of the file. 
-Save and close it. 
-``` zsh filename=".zshrc"
+
+Past it at the end of the file.
+Save and close it.
+
+```zsh filename=".zshrc"
 # postgres
 export PATH=$PATH:/usr/local/Cellar/postgresql@16/16.2_1/bin
-````
+```
 
-
-``` zsh
+```zsh
 source ~/.zshrc
 psql --version
 ```
 
 ## Configuring PostgreSQL
 
-``` zsh
+```zsh
 psql -U techxxy postgres
 ALTER USER techxxy PASSWORD '<PASSWORD>';
 \q
 sudo -u techxxy psql postgres -c "SHOW hba_file;"
 ```
 
-
+brew services stop postgresql
 
 ## Changing Vercel psql to locally installed PostgreSQL
 
-Install [node-postgres](https://node-postgres.com), a collection of node.js modules for interfacing with your PostgreSQL database.
+##
 
-``` zsh
-npm install pg
+how to delel all the table and data
+
+## How to set evn
+
+```json filename="package.json"
+"seed": "node -r dotenv/config ./scripts/seed.js"
 ```
+
+```json filename="package.json"
+"seed": "node -r dotenv/config ./scripts/seed.js dotenv_config_path=.env.local"
+```
+
+```json filename = package.json
+
+"dev": "npm run open-browser && next",
+"open-browser": "open http://localhost:3000/docs",
+
+```
+
+## Operation DATABASE
+```zsh filename=""
+```
+
+
+```zsh filename=""
+psql -U <CURRENTLY_LOGGED_IN_MAC_USERNAME> postgres
+psql -U jeeyoungpark postgres
+```
+
+```zsh filename="assign passwaord to this user"
+ALTER USER user_name WITH PASSWORD 'new_password';
+ALTER USER jeeyoungpark WITH PASSWORD 'new_password';
+```
+
+```zsh filename=""
+CREATE USER myuser WITH ENCRYPTED PASSWORD '77hshsh';
+```
+
+```zsh filename="To check the status"
+launchctl list | grep postgres
+```
+when it's running, my result is ``693	0	homebrew.mxcl.postgresql@16``
+
+```zsh filename="To start now and relaunch at login"
+
+brew services start postgresql@16
+brew services restart postgresql@16
+brew services stop postgresql@16
+```
+
+## Create DAtabase
+```zsh filename=""
+CREATE DATABASE sign_up;
+```
+
+```zsh filename=""
+CREATE DATABASE blog_nextjs_auth;
+DROP DATABASE postgres;
+```
+
+
+## client
+
+https://dbngin.com/
+
+User Permission
+https://medium.com/yavar/postgres-role-user-privileges-2490e245e7f6
+
+CREATE USER techxxy WITH LOGIN PASSWORD '내이름생일';
+
+```env filename=".evn"
+DATABASE_URL="postgresql://<username>:<password>@localhost:5432/ blog_nextjs_auth?schema=public"
+```
+

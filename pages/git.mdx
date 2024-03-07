@@ -1,3 +1,36 @@
-``` zsh filename="to previous commit" copy
-git resest 
+## How to compare Code in GitHub
+```zsh filename="to previous commit" copy
+git resest
 ```
+```zsh filename="tagging " copy
+git tag -a v1.0 -m "the completion of the example project"
+```
+https://github.com/techxxy/nextjs-dashboard/compare/v1.0...techxxy:v1.1.1
+```zsh copy
+git push origin <tag_name>
+git push origin v.1.1.1
+```
+
+## Removing Sensitive Data from GitHub
+
+Refered [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo)
+
+```zsh
+brew install git-filter-repo
+```
+
+Navigate to the upper directory of project directory and clone the repostiory
+
+```zsh
+git clone https://github.com/techxxy/nextjs-dashboard
+git clone https://github.com/techxxy/techxxy.github.io
+```
+Go to the project folder
+
+```zsh
+git filter-repo --invert-paths --path .envVercel
+git remote add origin https://github.com/techxxy/nextjs-dashboard
+git push origin --force --all
+git push origin --force --tags
+```
+git remote add origin https://github.com/techxxy/techxxy.github.io

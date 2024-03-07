@@ -1,56 +1,47 @@
-import { Callout, Steps, Tabs, Cards, Card} from 'nextra/components'
+import { Callout, Steps, Tabs, Cards, Card } from "nextra/components";
 
 import { IoWarningOutline } from "react-icons/io5";
 import { PiNumberCircleOneFill } from "react-icons/pi";
 import { HiOutlineRectangleStack } from "react-icons/hi2";
 
 # Markdown Examples
+
 Here is examples to copy and paste.
 For more information, please refer to [this](https://nextra.site/docs/guide)
 
-<Callout>
-    Callout
-</Callout>
+<Callout>Callout</Callout>
 
 ```mdx copy
-<Callout>
-    Callout
-</Callout>
+<Callout>Callout</Callout>
 ```
 
-
-
 ## Title 2
+
 ### Title 3
 
-<Steps>
-    ### Installation
-    Step 1
-    ### Deployment
-    Step 2
-</Steps>
+<Steps>### Installation Step 1 ### Deployment Step 2</Steps>
 
 <Cards>
-  <Card icon={<IoWarningOutline size="26"/>} title="Callout" href="" />
-  <Card icon={<HiOutlineRectangleStack size="26"/>} title="Tabs" href="" />
-  <Card icon={<PiNumberCircleOneFill size="26"/>} title="Steps" href="" />
+  <Card icon={<IoWarningOutline size="26" />} title="Callout" href="" />
+  <Card icon={<HiOutlineRectangleStack size="26" />} title="Tabs" href="" />
+  <Card icon={<PiNumberCircleOneFill size="26" />} title="Steps" href="" />
 </Cards>
 
-<Tabs items={['Tab 2', 'Tab2']}>
+<Tabs items={["Tab 2", "Tab2"]}>
   <Tabs.Tab> This is the tab sample.</Tabs.Tab>
 </Tabs>
 
 <details>
-<summary>Toggle list: Click to open</summary>
-Long contents
+  <summary>Toggle list: Click to open</summary>
+  Long contents
 </details>
 
 ```js filename="next.config.js" {1-2, 4} copy
-  // This is the code sample.
-  module.exports = {
-    ...withNextra(),
-    ...nextConfig,
-  };
+// This is the code sample.
+module.exports = {
+  ...withNextra(),
+  ...nextConfig,
+};
 ```
 
 ![](/pagesurl.png)

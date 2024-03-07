@@ -5,8 +5,12 @@
     "docs": "Nextra Docs - This site",    
     "nextjs-to-github-pages": "Next.js to GitHub Pages",
     "icons": "Icons",
+    "vercel-to-pg":"PostgreSQL Vercel to Local",
+    "dbeaver": {"title": "Dbeaver", "display": "hidden"},
     "postgresql": {"title": "PostgreSQL", "display": "hidden"},
     "examples": {"title": "Mardown Examples", "display": "hidden"},
-    "git": {"title": "Git", "display": "hidden"}
+    "git": {"title": "Git", "display": "hidden"},
+    "nextjs-signup": {"title": "nextjs-signup", "display": "hidden"},
+    "sign-up": {"title": "nextjs-signup", "display": "hidden"}
   }
 

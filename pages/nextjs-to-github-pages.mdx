@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { Callout, Steps, Tabs, Cards, Card } from 'nextra/components'
+import Image from "next/image";
+import { Callout, Steps, Tabs, Cards, Card } from "nextra/components";
 import { FaIcons } from "react-icons/fa6";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
-
 # Next.js to GitHub Pages
+
 [<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="nx-inline nx-h-5 nx-shrink-0 ltr:nx-rotate-180"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>What is GitHub Pages?](/github-pages)
 
-This page explains how to deploy the site you are currently viewing, which is a static Next.js App, to GitHub Pages. 
+This page explains how to deploy the site you are currently viewing, which is a static Next.js App, to GitHub Pages.
 
 ## Deploying to GitHub Pages
 
@@ -16,8 +16,9 @@ This page explains how to deploy the site you are currently viewing, which is a 
 Navigate to Settings > Pages > Build and Deployment > Source, and change `Deploy from a branch` to `GitHub Actions`.
 
 ![](/pages.png)
- 
+
 ### Edit YAML File
+
 Click on `Configure` and replace its content with the following code.
 
 <details>
@@ -30,32 +31,39 @@ Click on `Configure` and replace its content with the following code.
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+# Runs on pushes targeting the default branch
+
+push:
+branches: ["main"]
+
+# Allows you to run this workflow manually from the Actions tab
+
+workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+contents: read
+pages: write
+id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+group: "pages"
+cancel-in-progress: false
 
 jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+
+# Build job
+
+build:
+runs-on: ubuntu-latest
+steps: - name: Checkout
+uses: actions/checkout@v4
 
       - name: Detect package manager
         id: detect-package-manager
@@ -106,18 +114,19 @@ jobs:
         with:
           path: ./out
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
+# Deployment job
+
+deploy:
+environment:
+name: github-pages
+url: ${{ steps.deployment.outputs.page_url }}
+runs-on: ubuntu-latest
+needs: build
+steps: - name: Deploy to GitHub Pages
+id: deployment
+uses: actions/deploy-pages@v4
+
+````
 </details>
 
 ### Edit next.config.js
@@ -133,7 +142,7 @@ const nextConfig = {
     images: {                   // Using Nextra's image optimization instead of Next's,
         unoptimized: true,      // or an error will occur.
       },
-    basePath: '/docs', // Set this with your repository name, or styles will break. 
+    basePath: '/docs', // Set this with your repository name, or styles will break.
     output: 'export',           // Enabling static export to deploy on GitHub Pages.
   }
 
@@ -141,29 +150,28 @@ const withNextra = require('nextra')({
     theme: 'nextra-theme-docs',
     themeConfig: './theme.config.jsx'
   })
-   
+
   module.exports = {
     ...withNextra(),
     ...nextConfig,
   };
-```
+````
 
 ### Run
 
 With basePath now set, when you execute `npm run dev`, the website will be accessible at http://localhost:3000/basePath instead of http://localhost:3000.
 
-
 ### Build
 
-Execute `npm run build` and verify that the `out` folder is generated in the project directory. 
+Execute `npm run build` and verify that the `out` folder is generated in the project directory.
 
 ### Start
 
-Launch the site by running `npx serve@latest out` and ensure it's accessible at  http://localhost:3000/basePath.
+Launch the site by running `npx serve@latest out` and ensure it's accessible at http://localhost:3000/basePath.
 
 ### Push to Repository
 
-``` bash
+```bash
 git add .
 git commit -m "apply static export out"
 git push origin main

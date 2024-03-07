@@ -1,0 +1,47 @@
+import {Steps, FileTree} from "nextra/components";
+
+# Vercel/PostgreSQL to Local Migration: Next.js Dashboard App
+
+I have migrated the database of the [Next.js Dashboard App](nextjs) from Vercel/PostgreSQL (referred to as Postgres) to a local setup. You can find the [code differences](https://github.com/techxxy/nextjs-dashboard/compare/v1.0...techxxy:nextjs-dashboard:v.1.1.1) on GitHub. The actual code changes required for the migration are contained within the following four files: 
+
+<FileTree>
+  <FileTree.Folder name="scripts" defaultOpen>
+    <FileTree.File name="seed.js" />
+  </FileTree.Folder>
+  <FileTree.Folder name="app/lib" defaultOpen>
+    <FileTree.File name="actions.ts" />
+    <FileTree.File name="data.ts" />
+    <FileTree.File name="auth.th" />
+    <FileTree.File name="db.ts" />
+  </FileTree.Folder>
+</FileTree>
+
+Below are the changes made:
+
+<Steps>
+### Installing PostgreSQL Locally
+The process of installing PostgreSQL locally will be explained on a separate page later.
+
+### Updating the .env File
+Instructions for updating the .env file will be provided on a separate page later.
+
+### Installing the pg Package in the Project
+
+Install the [node-postgres](https://node-postgres.com) package (abbreviated as pg), which is a collection of Node.js modules for interfacing with your PostgreSQL database. For local PostgreSQL, we use the pg package, while for Vercel/Postgres, the @Vercel/Postgres package is utilized.
+
+This installation process will update the ``package-lock.json`` and ``package.jason`` files. Use the following command:
+
+```zsh
+npm install pg
+```
+
+### Code Changes
+For more detailed information, please refer to the [code differences](https://github.com/techxxy/nextjs-dashboard/compare/v1.0...techxxy:nextjs-dashboard:v.1.1.1) on GitHub.
+
+</Steps>
+
+
+
+
+
+

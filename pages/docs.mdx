@@ -1,29 +1,44 @@
-import Image from 'next/image'
-import { Callout, Steps, Tabs, Cards, Card } from 'nextra/components'
+import Image from "next/image";
+import { Callout, Steps, Tabs, Cards, Card } from "nextra/components";
 import { FaIcons } from "react-icons/fa6";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import { FaBoxOpen } from "react-icons/fa";
-
 
 # Documentation Site
 
 The website you are currently viewing is built using [NEXTRA](https://nextra.site/), a framework built on top of Next.js. It offers both Documentation and Blog themes, and this instance employs the [Documentation Theme](https://nextra.site/docs).
 
 <Callout>
-  The easiest way to install and deploy this site is by pressing the Deploy button below. The template project will be forked into your GitHub repository and automatically deployed on [Vercel](https://vercel.com/).
+  The easiest way to install and deploy this site is by pressing the Deploy
+  button below. The template project will be forked into your GitHub repository
+  and automatically deployed on [Vercel](https://vercel.com/).
   <a href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false">
-  <Image src="https://vercel.com/button" alt="Deplay button" width="100" height="10"/>
-  </a> 
+    <Image
+      src="https://vercel.com/button"
+      alt="Deplay button"
+      width="100"
+      height="10"
+    />
+  </a>
 </Callout>
-However, please note that this site has been installed as a new project and deployed on GitHub Pages. For How to deploy Next.js Static App on GitHub Pages, please click on the following button.
+However, please note that this site has been installed as a new project and deployed
+on GitHub Pages. For How to deploy Next.js Static App on GitHub Pages, please click
+on the following button.
 <Cards>
-  <Card icon={<FaBoxOpen size="22"/>} title="Deploy on GitHub Pages" href="/nextjs-to-github-pages" />
+  <Card
+    icon={<FaBoxOpen size="22" />}
+    title="Deploy on GitHub Pages"
+    href="/nextjs-to-github-pages"
+  />
 </Cards>
 Later, to utilize icons on this site, React-icons has been installed.
 <Cards>
-  <Card icon={<FaIcons size="20"/>} title="Install Icons" href="/icons#icons-for-this-site" />
+  <Card
+    icon={<FaIcons size="20" />}
+    title="Install Icons"
+    href="/icons#icons-for-this-site"
+  />
 </Cards>
-
 
 ## Running Locally
 
@@ -40,7 +55,7 @@ Later, to utilize icons on this site, React-icons has been installed.
     Replace your current `.gitignore` with the following.
     <details>
     <summary> Click here to view the new `.gitignore` code.</summary>
-    
+
         ``` ansi filename=".gitignore" copy
         # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
@@ -96,6 +111,7 @@ Later, to utilize icons on this site, React-icons has been installed.
     ```
 
     </Steps>
+
   </Tabs.Tab>
   <Tabs.Tab>
     <Steps>
